@@ -6,23 +6,19 @@ from micropython_pca9685 import Servo
 i2c = I2C(0, sda=Pin(14), scl=Pin(12))
 
 pca = PCA9685(i2c)
-servos = [0,1,2]
-for channel in pca.channels:
-    servos.append(Servo(channel))
-
+# HORNÍ SERVO doprava max 60, doleva max 160
+# Střed nahoru max 155, dolu max 35
+# spodek (noha) nahoru max 172, dolu max 15
 pca.frequency = 50
+servo = Servo(pca.channels[0])
+servo1 = Servo(pca.channels[1])
+servo2 = Servo(pca.channels[2])
 
-def wave(servo0, servo1. servo2):
-    for i in range(70):
-        servo0.angle = 90
-        time.sleep(1)
-        servo0.angle = 180
-        time.sleep(1)
-        servo1.angle = 0
-        time.sleep(1)
-        servo1.angle = 180
-        time.sleep(1)
-        servo2.angle = 0
-        time.sleep(1)
-        servo2.angle = 120
-        time.sleep(1)
+def wave(servo, servo1, servo2):
+    servo.angle = 75
+    time.sleep(1)
+    servo1.angle = 80
+    time.sleep(1)
+    servo2.angle = 50
+    time.sleep(1)
+
