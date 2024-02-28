@@ -1,0 +1,5 @@
+esp image - https://dratek.cz/arduino/1581-esp-32s-esp32-esp8266-development-board-2.4ghz-dual-mode-wifi-bluetooth-antenna-module.html
+servo image schema podrobne  (mozna ho tam dam jen) - https://theorycircuit.com/wp-content/uploads/2018/12/servo-motor-driver-circuit.png
+servo image - https://dratek.cz/arduino/122949-servo-mg995r-s-kovovymi-prevody-12kg-360.html
+servo schema - https://www.bighobby.cz/modelarska-poradna/jak-vybrat-spravne-servo/
+schéma serva a esp - https://tuanbestsm.live/product_details/56147741.html / https://diyi0t.com/wp-content/uploads/2020/11/Servo-PCA9685-External-Power-Supply-ESP8266-WeMos-D1-Mini_Steckplatine.png
