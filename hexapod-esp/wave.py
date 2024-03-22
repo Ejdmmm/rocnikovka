@@ -14,12 +14,13 @@ servo = Servo(pca.channels[0])
 servo1 = Servo(pca.channels[1])
 servo2 = Servo(pca.channels[2])
 
-def wave(servo, servo1, servo2):
+def wave():
+    global servo
+    global servo1
+    global servo2
     servo.angle = 75
     time.sleep(1)
     servo1.angle = 80
     time.sleep(1)
     servo2.angle = 50
     time.sleep(1)
-
-wave(servo, servo1, servo2)
