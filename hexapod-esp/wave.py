@@ -22,3 +22,4 @@ def wave(servo, servo1, servo2):
     servo2.angle = 50
     time.sleep(1)
 
+wave(servo, servo1, servo2)
