@@ -23,6 +23,7 @@ def setup_system_lib():
     sys.path.remove("/lib")
     sys.path.append("/lib/microdot")
     sys.path.append("/lib/pca9685")
+    sys.path.append("/lib/picoweb")
     print(f"Set new sys path: {sys.path}")
 
 if config.CREATE_AP:

@@ -1,24 +1,36 @@
-from microdot_asyncio import Microdot
-from microdot_asyncio import send_file
 import wave as servowave
 
-def start():
-    app = Microdot()
+html = """<!DOCTYPE html>
+<html>
+    <head> <title>ESP8266 Pins</title> </head>
+    <body> <h1>Jarmila mava</h1>
+         </table>
+    </body>
+</html>
+"""
 
-    @app.route('/')
-    def index(request):
-        return send_file("/static/index.html")
-    
-    @app.route('/static/<path:path>')
-    def static(request, path):
-        if '..' in path:
-            # directory traversal is not allowed
-            return 'Not found', 404
-        return send_file('static/' + path, max_age=86400)
-    
-    @app.route('/wave')
-    def wave(request):
-        servowave.wave()
-        return send_file("/static/index.html")
+import socket
+servowave.reset()
+addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 
-    app.run(port=80)
+s = socket.socket()
+s.bind(addr)
+s.listen(1)
+
+print('listening on', addr)
+
+while True:
+    cl, addr = s.accept()
+    print('client connected from', addr)
+    servowave.wave()
+    cl_file = cl.makefile('rwb', 0)
+    while True:
+        line = cl_file.readline()
+        if not line or line == b'\r\n':
+            break
+
+    response = html
+    cl.send('HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
+    cl.send(response)
+    cl.close()
+
